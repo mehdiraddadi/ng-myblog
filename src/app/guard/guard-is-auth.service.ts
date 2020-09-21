@@ -14,10 +14,10 @@ export class GuardIsAuthService implements CanActivate {
 ) {}
 
   canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<boolean> | Promise<boolean> | boolean {
-    const currentUser = this.authenticationService.currentUserValue;
-    if (currentUser) {
+    const currentToken = this.authenticationService.currentTokenValue;
+    if (currentToken) {
 
-      this.router.navigate([this.router.url], { queryParams: { returnUrl: state.url }});
+      this.router.navigate(['/admin'], { queryParams: { returnUrl: state.url }});
       return false;
     }
 

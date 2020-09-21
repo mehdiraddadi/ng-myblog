@@ -9,13 +9,16 @@ import { LoginComponent } from './login/login.component';
 import { appRoutingModule } from './app.routing';
 import { AlertComponent } from './alert/alert.component';
 import { ErrorInterceptorService } from "./helpers/error-interceptor.service";
+import { AdminComponent } from './admin/admin.component';
+import {HeaderInterceptor} from "./helpers/header-interceptor";
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
     LoginComponent,
-    AlertComponent
+    AlertComponent,
+    AdminComponent
   ],
   imports: [
     BrowserModule,
@@ -24,6 +27,7 @@ import { ErrorInterceptorService } from "./helpers/error-interceptor.service";
     appRoutingModule
   ],
   providers: [
+    { provide: HTTP_INTERCEPTORS, useClass: HeaderInterceptor, multi: true },
     { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptorService, multi: true },
   ],
   bootstrap: [AppComponent]

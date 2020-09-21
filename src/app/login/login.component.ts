@@ -55,8 +55,13 @@ export class LoginComponent implements OnInit {
       .pipe(first())
       .subscribe(
         data => {
-          this.router.navigate([this.returnUrl]);
-          this.alertService.success('Hello');
+          console.log(this.authenticationService.currentUserValue);
+          if(this.authenticationService.currentUserValue.roles.includes('ROLE_ADMIN')) {
+            this.router.navigate(['/admin']);
+          } else {
+            this.router.navigate([this.returnUrl]);
+          }
+
           setTimeout(() => {
             this.alertService.clear();
           }, 2500);

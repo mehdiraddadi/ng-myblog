@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import {HttpClient, HttpHeaders} from '@angular/common/http';
 import { User } from '../models/user';
 
 
@@ -11,6 +11,12 @@ export class UserService {
   constructor(private http: HttpClient) {}
 
   getAll() {
-    return this.http.get<User[]>('http://localhost/api/admin/users');
+    let headers = new HttpHeaders();
+    let xAuthToken = JSON.parse(localStorage.getItem('currentToken')).token;
+    headers.append('X-Auth-Token', xAuthToken);
+    headers = headers.append('Content-Type', 'application/json');
+
+    return this.http.get<User[]>(
+      'http://localhost/api/admin/users', {headers: headers});
   }
 }

@@ -4,6 +4,7 @@ import { BehaviorSubject, Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 
 import { User } from '../models/user';
+import {Token} from "../models/token";
 
 @Injectable({
   providedIn: 'root'
@@ -13,13 +14,26 @@ export class AuthenticationService {
   private currentUserSubject: BehaviorSubject<User>;
   public currentUser: Observable<User>;
 
+  // ajouter token
+  private currentTokenSubject: BehaviorSubject<Token>;
+  public currentToken: Observable<Token>;
+
   constructor(private http: HttpClient) {
-    this.currentUserSubject = new BehaviorSubject<User>(JSON.parse(localStorage.getItem('currentUser')));
-    this.currentUser = this.currentUserSubject.asObservable();
+    // ajouter token
+    this.currentTokenSubject = new BehaviorSubject<Token>(JSON.parse(localStorage.getItem('currentToken')));
+    this.currentToken = this.currentTokenSubject.asObservable();
+
+      this.currentUserSubject = new BehaviorSubject<User>(JSON.parse(localStorage.getItem('currentUser')));
+      this.currentUser = this.currentUserSubject.asObservable();
   }
 
   public get currentUserValue(): User {
     return this.currentUserSubject.value;
+  }
+
+  // ajouter token
+  public get currentTokenValue(): Token {
+    return this.currentTokenSubject.value;
   }
 
   login(username, password) {
@@ -31,15 +45,24 @@ export class AuthenticationService {
     return this.http.post<any>('http://localhost/api/auth-tokens/login', formData)
       .pipe(map(user => {
         // store user details and jwt token in local storage to keep user logged in between page refreshes
-        localStorage.setItem('currentUser', JSON.stringify(user));
-        this.currentUserSubject.next(user);
+        // localStorage.setItem('currentUser', JSON.stringify(user));
+
+        localStorage.setItem('currentToken', JSON.stringify(user));
+        localStorage.setItem('currentUser', JSON.stringify(user.user));
+
+        this.currentTokenSubject.next(user);
+        this.currentUserSubject.next(user.user);
+
         return user;
       }));
   }
 
   logout() {
     // remove user from local storage and set current user to null
-    localStorage.removeItem('currentUser');
+    localStorage.removeItem('currentToken');
     this.currentUserSubject.next(null);
+
+    localStorage.removeItem('currentUser');
+    this.currentTokenSubject.next(null);
   }
 }

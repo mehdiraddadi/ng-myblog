@@ -14,8 +14,8 @@ export class GuardService implements CanActivate {
   ) {}
 
   canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<boolean> | Promise<boolean> | boolean {
-    const currentUser = this.authenticationService.currentUserValue;
-    if (currentUser) {
+    const currentToken = this.authenticationService.currentTokenValue;
+    if (currentToken) {
       // authorised so return true
       return true;
     }

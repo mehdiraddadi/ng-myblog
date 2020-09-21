@@ -1,1 +1,138 @@
-<p>home works!</p>
+<!--<div class="card mb-3">-->
+<!--  <h5 class="card-header">{{currentUser.firstname}} {{currentUser.lastname}}</h5>-->
+<!--  <div class="card-body">-->
+<!--    <p class="card-text">{{currentUser.profession}}</p>-->
+<!--  </div>-->
+<!--</div>-->
+<!--<div class="card mb-3">-->
+<!--  <h5 class="card-header">Description</h5>-->
+<!--  <div class="card-body">-->
+<!--    <p class="card-text">djfhkjh dllshdkjhs dlsndkhs sdlljhsdh </p>-->
+<!--  </div>-->
+<!--</div>-->
+
+<!--<div class="card mb-3">-->
+<!--  <h5 class="card-header">Exprience</h5>-->
+<!--  <div *ngFor="let experience of currentUser.experiences">-->
+<!--    <div class="card-header">-->
+<!--      <span>{{experience.title}}</span>-->
+<!--      <span>{{experience.start_date | date:'MMM-yyyy'}}</span>.-->
+<!--      <span *ngIf="experience.end_date">{{experience.end_date | date:'MMM-yyyy'}}</span>-->
+<!--      <span *ngIf="!experience.end_date">Aujourd'hui</span>-->
+<!--    </div>-->
+<!--    <div class="card-body">-->
+<!--      <p class="card-text">{{experience.description}}</p>-->
+<!--    </div>-->
+<!--  </div>-->
+<!--</div>-->
+
+<!--<div class="card mb-3">-->
+<!--  <h5 class="card-header">Formation</h5>-->
+<!--  <div *ngFor="let formation of currentUser.formations">-->
+<!--    <div class="card-body">-->
+<!--      <span>{{formation.name}}</span>-->
+<!--      <span>{{formation.dateObtained | date:'MMM-yyyy'}}</span>.-->
+<!--      <span>{{formation.establishment}}</span>.-->
+<!--    </div>-->
+<!--  </div>-->
+<!--</div>-->
+
+<!--<div class="card mb-3">-->
+<!--  <h5 class="card-header">Compétences</h5>-->
+<!--<div class="row" *ngFor="let competance of currentUser.competances">-->
+<!--  <div class="col-sm-6">-->
+<!--    <div class="card">-->
+<!--      <div class="card-body">-->
+<!--        {{competance.name}}-->
+<!--      </div>-->
+<!--    </div>-->
+<!--  </div>-->
+<!--</div>-->
+<!--</div>-->
+
+<div class="wrapper-top"></div>
+<div class="wrapper-mid">
+  <!-- Begin Paper -->
+  <div id="paper">
+    <div class="paper-top"></div>
+    <div id="paper-mid">
+      <div class="entry">
+        <!-- Begin Image -->
+        <img class="portrait" src="images/image.jpg" alt="John Smith" />
+        <!-- End Image -->
+        <!-- Begin Personal Information -->
+        <div class="self">
+          <h1 class="name">{{currentUser.firstname}} {{currentUser.lastname}}<br />
+            <span>{{currentUser.profession}}</span></h1>
+          <ul>
+            <li class="ad">{{currentUser.address}}</li>
+            <li class="mail">{{currentUser.email}}</li>
+            <li class="tel">{{currentUser.phone}}</li>
+          </ul>
+        </div>
+        <!-- End Personal Information -->
+
+      </div>
+      <!-- Begin 1st Row -->
+      <div class="entry">
+        <h2>OBJECTIVE</h2>
+        <p>{{currentUser.profession}}</p>
+      </div>
+      <!-- End 1st Row -->
+      <!-- Begin 2nd Row -->
+      <div class="entry">
+        <h2>Formation</h2>
+        <div class="content" *ngFor="let formation of currentUser.formations">
+          <h3>{{formation.dateObtained | date:'MMM-yyyy'}} </h3>
+          <p>{{formation.name}}<br />
+            <em>{{formation.establishment}}</em></p>
+        </div>
+      </div>
+      <!-- End 2nd Row -->
+      <!-- Begin 3rd Row -->
+      <div class="entry">
+        <h2>EXPERIENCE</h2>
+        <div class="content" *ngFor="let experience of currentUser.experiences">
+          <h3>
+            <span>{{experience.start_date | date:'MMM-yyyy'}}</span>
+             - <span *ngIf="experience.end_date">{{experience.end_date | date:'MMM-yyyy'}}</span>
+            <span *ngIf="!experience.end_date">Aujourd'hui</span>
+          </h3>
+          <p>Societe<br />
+            <em>{{experience.title}}</em></p>
+          <ul class="info">
+           <li>{{experience.description}}</li>
+          </ul>
+        </div>
+      </div>
+      <!-- End 3rd Row -->
+      <!-- Begin 4th Row -->
+      <div class="entry">
+        <h2>SKILLS</h2>
+        <div class="content">
+          <h3>Software Knowledge</h3>
+          <ul class="skills">
+            <li>Photoshop</li>
+            <li>Illustrator</li>
+            <li>InDesign</li>
+            <li>Flash</li>
+            <li>Fireworks</li>
+            <li>Dreamweaver</li>
+            <li>After Effects</li>
+            <li>Cinema 4D</li>
+            <li>Maya</li>
+          </ul>
+        </div>
+        <div class="content">
+          <h3>Languages</h3>
+          <ul class="skills">
+            <li *ngFor="let competance of currentUser.competances">{{competance.name}}</li>
+
+          </ul>
+        </div>
+      </div>
+      <!-- End 4th Row -->
+    </div>
+    <div class="clear"></div>
+    <div class="paper-bottom"></div>
+  </div>
