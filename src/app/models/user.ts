@@ -9,4 +9,5 @@ export class User {
   experiences: object
   formations: object
   competances: object
+  imageName: string
 }

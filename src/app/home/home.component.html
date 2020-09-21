@@ -58,7 +58,13 @@
     <div id="paper-mid">
       <div class="entry">
         <!-- Begin Image -->
-        <img class="portrait" src="images/image.jpg" alt="John Smith" />
+        <div *ngIf="currentUser.imageName;">
+          <img class="portrait" src="images/image.jpg" alt="{{currentUser.firstname}} {{currentUser.lastname}}" />
+        </div>
+        <div *ngIf="!currentUser.imageName;">
+          <img class="portrait" src="../../assets/images/default.png" alt="{{currentUser.firstname}} {{currentUser.lastname}}" />
+        </div>
+
         <!-- End Image -->
         <!-- Begin Personal Information -->
         <div class="self">
