@@ -11,6 +11,7 @@ import { AlertComponent } from './alert/alert.component';
 import { ErrorInterceptorService } from "./helpers/error-interceptor.service";
 import { AdminComponent } from './admin/admin.component';
 import {HeaderInterceptor} from "./helpers/header-interceptor";
+import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import {HeaderInterceptor} from "./helpers/header-interceptor";
     BrowserModule,
     ReactiveFormsModule,
     HttpClientModule,
-    appRoutingModule
+    appRoutingModule,
+    NgbModule
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: HeaderInterceptor, multi: true },

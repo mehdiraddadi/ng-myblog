@@ -11,12 +11,13 @@ export class UserService {
   constructor(private http: HttpClient) {}
 
   getAll() {
-    let headers = new HttpHeaders();
-    let xAuthToken = JSON.parse(localStorage.getItem('currentToken')).token;
-    headers.append('X-Auth-Token', xAuthToken);
-    headers = headers.append('Content-Type', 'application/json');
-
     return this.http.get<User[]>(
-      'http://localhost/api/admin/users', {headers: headers});
+      'http://localhost/api/admin/users');
+  }
+
+  updatePhoto(form) {
+    const formData = new FormData();
+    formData.append('imageFile', form.get('fileSource').value);
+      return this.http.post('http://localhost/api/admin/users/edit_photo', formData);
   }
 }

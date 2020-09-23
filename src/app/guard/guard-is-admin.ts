@@ -16,7 +16,6 @@ export class GuardIsAdmin implements CanActivate{
 
   canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<boolean> | Promise<boolean> | boolean {
     const currentToken = this.authenticationService.currentTokenValue;
-    console.log(currentToken);
     if(currentToken) {
       const currentUser = this.authenticationService.currentUserValue;
       if(currentUser.roles) {

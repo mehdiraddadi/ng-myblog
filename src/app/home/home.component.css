@@ -149,18 +149,33 @@ a:hover {
   clear: both;
   margin-left:4px;
 }
+.entry-objectif {
+  width:720px;
+  display: block;
+  padding-top: 20px;
+  padding-bottom: 40px;
+  clear: both;
+  margin-left:4px;
+}
+
+
+.entry-info {
+  display: block;
+  padding-top:55px;
+  clear: both;
+  margin-left:4px;
+}
 
 h1  {
   width:250px;
-  font-size:42px;
+  font-size:34px;
   color:#1b4491;
   margin-bottom:3px;
   clear:both;
 }
 
 h1 span {
-  font-size:21px;
-  display:block;
+  font-size:20px;
   color:#1b4491;
   margin-top:-5px;
 }
@@ -168,9 +183,9 @@ h1 span {
 h2 {
   width:180px;
   height: 23px;
-  text-align: right;
+  text-align: left;
+  padding-left: 30px;
   float:left;
-  padding:0;
   margin:0;
   clear:both;
   font-size:22px;
@@ -192,18 +207,18 @@ p img {
 
 div.content {
   clear: both;
-  padding:0;
   margin:0;
   overflow: hidden;
   display:block;
-  padding-top:32px;
+  padding-top:25px;
+  padding-bottom: 20px;
 }
 
 h3 {
   width:180px;
-  text-align: right;
+  text-align: left;
+  padding-left: 30px;
   float:left;
-  padding:0;
   clear:both;
   font-size: 13px;
   color:#7b90b5;
@@ -376,13 +391,10 @@ ul.works li img:hover {
 
 img.portrait {
   background-repeat: no-repeat;
-  width:109px;
-  height:109px;
-  padding-top:20px;
-  padding-left:11px;
+  width: 160px;
+  height: 226px;
   padding-right:11px;
   padding-bottom:36px;
-  margin-left:50px;
   float:left;
 
 }
@@ -397,10 +409,6 @@ img.portrait {
   padding-top:11px;
   margin-left:38px;
   margin-bottom:15px;
-}
-
-.self ul {
-  padding-top: 10px;
 }
 
 
@@ -428,3 +436,7 @@ big {
   font-size:1.2em;
 }
 
+.card.card-prodile {
+  border: 1px solid rgba(0,0,0,.125);
+  word-wrap: break-word;
+}
