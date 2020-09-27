@@ -12,6 +12,8 @@ import { ErrorInterceptorService } from "./helpers/error-interceptor.service";
 import { AdminComponent } from './admin/admin.component';
 import {HeaderInterceptor} from "./helpers/header-interceptor";
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
+import { FormationComponent } from './profile/formation/formation.component';
+import { ObjectifComponent } from './profile/objectif/objectif.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +21,9 @@ import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
     HomeComponent,
     LoginComponent,
     AlertComponent,
-    AdminComponent
+    AdminComponent,
+    FormationComponent,
+    ObjectifComponent
   ],
   imports: [
     BrowserModule,

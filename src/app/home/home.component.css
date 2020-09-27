@@ -143,9 +143,8 @@ a:hover {
 /* ----------------------------------------- */
 
 .entry {
-  width:720px;
   display: block;
-  padding-top:55px;
+  padding-top:25px;
   clear: both;
   margin-left:4px;
 }
@@ -195,8 +194,6 @@ h2 {
 
 p {
   width:500px;
-  margin-left:40px;
-  float:right;
 }
 
 p img {
@@ -439,4 +436,8 @@ big {
 .card.card-prodile {
   border: 1px solid rgba(0,0,0,.125);
   word-wrap: break-word;
+}
+
+svg.edit-icon {
+  float: right;
 }

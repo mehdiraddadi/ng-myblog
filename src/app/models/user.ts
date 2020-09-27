@@ -10,4 +10,7 @@ export class User {
   formations: object
   competances: object
   filename: string
+  address: string
+  phone: string
+  email; string
 }

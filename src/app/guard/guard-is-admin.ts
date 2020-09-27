@@ -19,9 +19,9 @@ export class GuardIsAdmin implements CanActivate{
     if(currentToken) {
       const currentUser = this.authenticationService.currentUserValue;
       if(currentUser.roles) {
-         if(currentUser.roles.includes('ROLE_ADMIN')) {
-           console.log(currentUser.roles);
-           this.router.navigate(['/admin'], { queryParams: { returnUrl: state.url } });
+         if('ROLE_ADMIN' in currentUser.roles) {
+           console.log(typeof currentUser.roles);
+           // this.router.navigate(['/admin'], { queryParams: { returnUrl: state.url } });
            return true;
          } else {
            return false;

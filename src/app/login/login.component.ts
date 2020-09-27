@@ -55,8 +55,7 @@ export class LoginComponent implements OnInit {
       .pipe(first())
       .subscribe(
         data => {
-          console.log(this.authenticationService.currentUserValue);
-          if(this.authenticationService.currentUserValue.roles.includes('ROLE_ADMIN')) {
+          if('ROLE_ADMIN' in this.authenticationService.currentUserValue.roles) {
             this.router.navigate(['/admin']);
           } else {
             this.router.navigate([this.returnUrl]);
