@@ -5,40 +5,12 @@
     <div id="paper-mid">
       <div class="entry-info">
         <!-- Begin Image -->
-        <div *ngIf="currentUser.filename;">
+        <div *ngIf="currentUser.filename;" (click)="open(UploadComponent)">
           <img class="portrait" src="http://localhost/uploads/users/{{currentUser.filename}}" alt="{{currentUser.firstname}} {{currentUser.lastname}}" />
         </div>
-        <div *ngIf="!currentUser.filename;">
+        <div *ngIf="!currentUser.filename;" (click)="open(UploadComponent)">
           <img class="portrait" src="../../assets/images/default.png" alt="{{currentUser.firstname}} {{currentUser.lastname}}" />
         </div>
-
-
-        <ng-template #content let-modal>
-          <form [formGroup]="myForm" (ngSubmit)="submit()">
-            <div class="modal-body">
-              <div class="form-group">
-                <div class="input-group">
-                  <div class="form-group">
-                    <input
-                      formControlName="file"
-                      id="file"
-                      type="file"
-                      class="form-control"
-                      (change)="onFileChange($event)">
-                  </div>
-
-                </div>
-              </div>
-            </div>
-            <div class="modal-footer">
-              <div class="modal-footer">
-                <button class="btn btn-primary" type="submit">Submit</button>
-                <button type="button" class="btn btn-outline-dark" (click)="dismiss()">annuler</button>
-              </div>
-            </div>
-          </form>
-
-        </ng-template>
         <!-- End Image -->
         <!-- Begin Personal Information -->
         <div class="card card-prodile">

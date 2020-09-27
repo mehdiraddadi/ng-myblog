@@ -1,0 +1,28 @@
+<div class="modal-card">
+  <form [formGroup]="myForm" (ngSubmit)="submit()">
+  <section class="modal-card-body">
+      <div class="modal-body">
+        <div class="form-group">
+          <div class="input-group">
+            <div class="form-group">
+              <input
+                id="file"
+                type="file"
+                formControlName="file"
+                class="form-control"
+                (change)="onFileChange($event)">
+            </div>
+
+          </div>
+        </div>
+      </div>
+
+  </section>
+  <footer class="modal-card-foot">
+    <div class="buttons is-right">
+      <button type="submit" class="button is-success">Upload</button>
+      <button (click)="close('no')" type="button" class="button is-danger">Cancel</button>
+    </div>
+  </footer>
+  </form>
+</div>

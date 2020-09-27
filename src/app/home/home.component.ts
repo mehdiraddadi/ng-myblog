@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit, TemplateRef} from '@angular/core';
 import { first } from 'rxjs/operators';
 
 import { User } from '../models/user';
@@ -7,7 +7,9 @@ import { AuthenticationService } from '../services/authentication.service';
 
 import { FormGroup, FormControl, Validators} from '@angular/forms';
 import {AlertService} from "../services/alert.service";
-import {NgbModal, ModalDismissReasons} from '@ng-bootstrap/ng-bootstrap';
+import {ComponentType} from "@angular/cdk/portal";
+import {OverlayService} from "../helpers/overlay.service";
+import {UploadFileComponent} from "../modal/upload-file/upload-file.component";
 
 @Component({
   selector: 'app-home',
@@ -15,20 +17,16 @@ import {NgbModal, ModalDismissReasons} from '@ng-bootstrap/ng-bootstrap';
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit {
-  closeResult = '';
-  myForm = new FormGroup({
-    name: new FormControl('', [Validators.required, Validators.minLength(3)]),
-    file: new FormControl('', [Validators.required]),
-    fileSource: new FormControl('', [Validators.required])
-  });
   currentUser: User;
   users = [];
+  content = 'A simple string content modal overlay';
+  UploadComponent = UploadFileComponent;
 
   constructor(
     private authenticationService: AuthenticationService,
     private userService: UserService,
     private alertService: AlertService,
-    private modalService: NgbModal
+    private overlayService: OverlayService
   ) {
     this.currentUser = this.authenticationService.currentUserValue;
   }
@@ -42,31 +40,16 @@ export class HomeComponent implements OnInit {
       .subscribe(users => this.users = users);
   }
 
-  get f(){
-    return this.myForm.controls;
-  }
+  open(content: TemplateRef<any> | ComponentType<any> | string) {
+    const ref = this.overlayService.open(content, null);
 
-  onFileChange(event) {
-
-    if (event.target.files.length > 0) {
-      const file = event.target.files[0];
-      this.myForm.patchValue({
-        fileSource: file
-      });
-    }
-  }
-
-  submit(id: string){
-    this.userService.updatePhoto(this.myForm)
-      .pipe(first())
-      .subscribe(data => {
-        this.modalService.dismissAll();
-          this.alertService.clear();
-          this.alertService.success('Uploaded!');
-      },
-        error => {
-          this.modalService.dismissAll();
-          this.alertService.error(error);
-        });
+    // ref.afterClosed$.subscribe(res => {
+    //   if (typeof content === 'string') {
+    //   } else if (content === this.yesNoComponent) {
+    //     this.yesNoComponentResponse = res.data;
+    //   } else {
+    //     this.yesNoTemplateResponse = res.data;
+    //   }
+    // });
   }
 }

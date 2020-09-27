@@ -14,6 +14,9 @@ import {HeaderInterceptor} from "./helpers/header-interceptor";
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import { FormationComponent } from './profile/formation/formation.component';
 import { ObjectifComponent } from './profile/objectif/objectif.component';
+import { OverlayComponent } from './overlay/overlay.component';
+import {OverlayModule} from "@angular/cdk/overlay";
+import { UploadFileComponent } from './modal/upload-file/upload-file.component';
 
 @NgModule({
   declarations: [
@@ -23,19 +26,23 @@ import { ObjectifComponent } from './profile/objectif/objectif.component';
     AlertComponent,
     AdminComponent,
     FormationComponent,
-    ObjectifComponent
+    ObjectifComponent,
+    OverlayComponent,
+    UploadFileComponent
   ],
   imports: [
     BrowserModule,
     ReactiveFormsModule,
     HttpClientModule,
     appRoutingModule,
-    NgbModule
+    NgbModule,
+    OverlayModule
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: HeaderInterceptor, multi: true },
     { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptorService, multi: true },
   ],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  entryComponents: [OverlayComponent]
 })
 export class AppModule { }
