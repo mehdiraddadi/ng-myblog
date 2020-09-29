@@ -12,5 +12,6 @@ export class User {
   filename: string
   address: string
   phone: string
-  email; string
+  email: string
+  objectif: string
 }

@@ -34,4 +34,8 @@ export class MyOverlayRef<R = any, T = any> {
 
     this.afterClosed$.complete();
   }
+
+  public getData() {
+    return this.data;
+  }
 }

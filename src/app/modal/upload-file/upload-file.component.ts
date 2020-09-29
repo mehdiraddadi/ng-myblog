@@ -56,9 +56,8 @@ export class UploadFileComponent implements OnInit {
       this.userService.updatePhoto(this.myForm)
         .pipe(first())
         .subscribe(data => {
-            console.log('dfd')
             let currentUser = this.authenticationService.currentUserValue;
-            currentUser.filename = data.message;
+            currentUser.filename = data['message'];
             localStorage.setItem('currentUser', JSON.stringify(currentUser));
 
             this.alertService.clear();

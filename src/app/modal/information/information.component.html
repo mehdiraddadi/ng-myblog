@@ -1,0 +1,34 @@
+<div class="modal-card">
+  <form [formGroup]="FormInfo" (ngSubmit)="submit()">
+    <section class="modal-card-body">
+      <div class="modal-body">
+        <div class="form-group">
+          <input type="text" id="firstname" formControlName="firstname" class="form-control">
+        </div>
+
+        <div class="form-group">
+          <input type="text" id="lastname" formControlName="lastname" class="form-control">
+        </div>
+
+        <div class="form-group">
+          <input type="text" id="phone" formControlName="phone" class="form-control">
+        </div>
+
+        <div class="form-group">
+          <input type="text" id="address" formControlName="address" class="form-control">
+        </div>
+
+        <div class="form-group">
+          <input type="text" id="profession" formControlName="profession" class="form-control">
+        </div>
+      </div>
+
+    </section>
+    <footer class="modal-card-foot">
+      <div class="buttons is-right">
+        <button type="submit" class="button is-success">Modofier</button>
+        <button (click)="close('no')" type="button" class="button is-danger">Annuler</button>
+      </div>
+    </footer>
+  </form>
+</div>
