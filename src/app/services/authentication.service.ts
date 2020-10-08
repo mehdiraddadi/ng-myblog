@@ -1,10 +1,11 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { BehaviorSubject, Observable } from 'rxjs';
+import {BehaviorSubject, Observable, pipe} from 'rxjs';
 import { map } from 'rxjs/operators';
 
 import { User } from '../models/user';
 import {Token} from "../models/token";
+import {Router} from "@angular/router";
 
 @Injectable({
   providedIn: 'root'
@@ -18,7 +19,7 @@ export class AuthenticationService {
   private currentTokenSubject: BehaviorSubject<Token>;
   public currentToken: Observable<Token>;
 
-  constructor(private http: HttpClient) {
+  constructor(private http: HttpClient, private router: Router) {
     // ajouter token
     this.currentTokenSubject = new BehaviorSubject<Token>(JSON.parse(localStorage.getItem('currentToken')));
     this.currentToken = this.currentTokenSubject.asObservable();
@@ -57,12 +58,18 @@ export class AuthenticationService {
       }));
   }
 
-  logout() {
-    // remove user from local storage and set current user to null
-    localStorage.removeItem('currentToken');
-    this.currentUserSubject.next(null);
+  logout(token) {
 
-    localStorage.removeItem('currentUser');
-    this.currentTokenSubject.next(null);
+    return this.http.delete('http://localhost/api/auth-tokens/' + token)
+      .subscribe(
+        res => {
+          localStorage.removeItem('currentToken');
+          this.currentUserSubject.next(null);
+
+          localStorage.removeItem('currentUser');
+          this.currentTokenSubject.next(null);
+          this.router.navigate(['/login']);
+        }
+      );
   }
 }

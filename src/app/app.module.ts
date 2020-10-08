@@ -12,7 +12,7 @@ import { ErrorInterceptorService } from "./helpers/error-interceptor.service";
 import { AdminComponent } from './admin/admin.component';
 import {HeaderInterceptor} from "./helpers/header-interceptor";
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
-import { FormationComponent } from './profile/formation/formation.component';
+import { FormationComponent } from "./modal/formation/formation.component";
 import { OverlayComponent } from './overlay/overlay.component';
 import {OverlayModule} from "@angular/cdk/overlay";
 import { UploadFileComponent } from './modal/upload-file/upload-file.component';

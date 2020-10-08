@@ -34,7 +34,7 @@ export class ObjectifComponent implements OnInit {
     this.ref.close(value);
   }
 
-  submit(id: string){
+  submit(){
     if (!this.FormObjectif.invalid) {
       this.userService.updateInfos(this.FormObjectif)
         .pipe(first())

@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 
 import { AuthenticationService } from './services/authentication.service';
 import { User } from './models/user';
+import {first} from "rxjs/operators";
 
 @Component({
   selector: 'app-root',
@@ -20,7 +21,8 @@ export class AppComponent {
   }
 
   logout() {
-    this.authenticationService.logout();
-    this.router.navigate(['/login']);
+    let token = this.authenticationService.currentTokenValue.id;
+    this.authenticationService.logout(token);
+
   }
 }

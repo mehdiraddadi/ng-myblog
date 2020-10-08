@@ -51,7 +51,7 @@ export class UploadFileComponent implements OnInit {
     }
   }
 
-  submit(id: string){
+  submit(){
     if (!this.myForm.invalid) {
       this.userService.updatePhoto(this.myForm)
         .pipe(first())

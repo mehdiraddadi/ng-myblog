@@ -40,7 +40,7 @@ export class InformationComponent implements OnInit {
   }
 
 
-  submit(id: string){
+  submit(){
     if (!this.FormInfo.invalid) {
       this.userService.updateInfos(this.FormInfo)
         .pipe(first())

@@ -41,4 +41,15 @@ export class UserService {
     formData.append('objectif', InfoUser.objectif);
     return this.http.post('http://localhost/api/admin/users/edit_infos', formData);
   }
+
+  updateFormation(id, form) {
+    var datestr = (new Date(form.get('dateObtained').value)).toUTCString();
+    const formData = new FormData();
+
+    formData.append('name', form.get('name').value);
+    formData.append('establishment', form.get('establishment').value);
+    // formData.append('dateObtained', datestr);
+
+    return this.http.post('http://localhost/api/admin/users/edit_formation/' + id, formData);
+  }
 }

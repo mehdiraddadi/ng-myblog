@@ -16,13 +16,14 @@ export class ErrorInterceptorService implements HttpInterceptor{
 
   intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
     return next.handle(request).pipe(catchError(err => {
+      let token = this.authenticationService.currentTokenValue.id;
       if (err.status === 401) {
         // auto logout if 401 response returned from api
-        this.authenticationService.logout();
+        this.authenticationService.logout(token);
         location.reload(true);
       }
       if (err.status === 500 && err.error.message === "Invalid authentication token") {
-        this.authenticationService.logout();
+        this.authenticationService.logout(token);
         location.reload(true);
       }
 
