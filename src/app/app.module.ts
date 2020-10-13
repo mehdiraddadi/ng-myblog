@@ -18,6 +18,7 @@ import {OverlayModule} from "@angular/cdk/overlay";
 import { UploadFileComponent } from './modal/upload-file/upload-file.component';
 import { InformationComponent } from './modal/information/information.component';
 import { ObjectifComponent } from './modal/objectif/objectif.component';
+import { ExprienceComponent } from './modal/exprience/exprience.component';
 
 @NgModule({
   declarations: [
@@ -30,7 +31,8 @@ import { ObjectifComponent } from './modal/objectif/objectif.component';
     OverlayComponent,
     UploadFileComponent,
     InformationComponent,
-    ObjectifComponent
+    ObjectifComponent,
+    ExprienceComponent
   ],
   imports: [
     BrowserModule,

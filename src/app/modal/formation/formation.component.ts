@@ -36,7 +36,6 @@ export class FormationComponent implements OnInit {
   initForm() {
     const formatedDateObtained = Date.parse(this.ref.data.dateObtained);
     this.dateObtained = this.pipe.transform(formatedDateObtained, 'yyyy-MM-dd');
-    console.log(this.pipe.transform(formatedDateObtained, 'yyyy-MM-dd'));
     this.FormFormation = this.formBuilder.group({
       dateObtained: ['', Validators.required],
       establishment: [this.ref.data.establishment, Validators.required],

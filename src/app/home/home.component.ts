@@ -14,6 +14,7 @@ import {Router} from "@angular/router";
 import { Location } from "@angular/common";
 import {ObjectifComponent} from "../modal/objectif/objectif.component";
 import {FormationComponent} from "../modal/formation/formation.component";
+import {ExprienceComponent} from "../modal/exprience/exprience.component";
 
 @Component({
   selector: 'app-home',
@@ -28,6 +29,7 @@ export class HomeComponent implements OnInit {
   InformationComponent = InformationComponent;
   ObjectifComponent = ObjectifComponent;
   FormationComponent = FormationComponent;
+  ExprienceComponent = ExprienceComponent;
 
   constructor(
     private authenticationService: AuthenticationService,
@@ -69,7 +71,7 @@ export class HomeComponent implements OnInit {
           }
         }
       });
-    } else if(typeof data === 'object' && data.type === 'formation') {
+    } else if(typeof data === 'object' && (data.type === 'formation' || data.type === 'exprience')) {
       const ref = this.overlayService.open(content, data.object);
     } else {
       const ref = this.overlayService.open(content, null);

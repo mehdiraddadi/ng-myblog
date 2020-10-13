@@ -1,0 +1,50 @@
+<div class="modal-card">
+  <form [formGroup]="FormExprience" (ngSubmit)="submit()">
+    <section class="modal-card-body">
+      <div class="modal-body">
+        <label for="start_date">Date du debut</label>
+        <div class="form-group">
+          <input type="date" id="start_date"
+                 formControlName="start_date"
+                 name="start_date"
+                 min="1999-01-01"
+                 max="2030-12-31"
+                 [ngModel]="start_date"
+                 class="form-control">
+        </div>
+        <label for="start_date">Date du fin</label>
+        <div class="form-group">
+          <input type="date" id="end_date"
+                 formControlName="end_date"
+                 name="start_date"
+                 min="1999-01-01"
+                 max="2030-12-31"
+                 [ngModel]="end_date"
+                 class="form-control">
+          <div>
+            <label for="inPost">En poste</label>
+            <input type="checkbox" name="inPost" [value]="true" [checked]="inPost" />
+          </div>
+          </div>
+
+
+
+        <label for="title">Poste</label>
+        <div class="form-group">
+          <input type="text" id="title" formControlName="title" class="form-control">
+        </div>
+        <label for="description">Description</label>
+        <div class="form-group">
+          <textarea id="description" formControlName="description" class="form-control"></textarea>
+        </div>
+      </div>
+
+    </section>
+    <footer class="modal-card-foot">
+      <div class="buttons is-right">
+        <button type="submit" class="button is-success">Modofier</button>
+        <button (click)="close('no')" type="button" class="button is-danger">Annuler</button>
+      </div>
+    </footer>
+  </form>
+</div>
